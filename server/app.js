@@ -17,6 +17,13 @@ app.use(cookieParser());
 app.get('/', (req, res) => {
   res.send('Server is running');
 });
+// Profile route
+app.get('/profile', (req, res) => {
+  res.json({
+    message: 'Profile page',
+  });
+});
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
