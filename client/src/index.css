@@ -84,3 +84,50 @@
 .footer{
   background-color: #2B2B2B;
 }
+
+
+
+
+/* ##################### forms ################## */
+.form_grp input{
+  border: 1px solid blue;
+  margin-left: 1em;
+  text-align: center;
+  padding: 0.05em 0.05em;
+  border-radius: 1rem;
+}
+
+.form_button{
+  background-color: black;
+  color: white;
+  border-radius: 3rem;
+  padding: 0.2em 2.3em;
+  margin-bottom: 1em ;
+  font-size: 1rem;
+
+}
+.form_button:hover{
+  background-color: white;
+  color: black;
+  /* text-decoration: underline; */
+  border: 3px solid black;
+  
+}
+
+.form_container {
+  margin: auto;
+  text-align: center ;
+  
+}
+.form_container div{
+  margin: 1em 0;  
+  
+}
+
+
+
+/* .form_page{
+  width: 100vw;
+  display: grid;
+  place-items: center;  
+} */
