@@ -5,11 +5,13 @@ const clearCollection = require('./devutils/clearCollection');
 
 const cookieParser = require('cookie-parser');
 const connectDB = require('./utils/db');
+const cors = require('cors');
 
 //^ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(cors());
 
 app.use('/user', require('./routes/userRoute'))
 
