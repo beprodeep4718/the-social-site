@@ -1,22 +1,18 @@
+require('dotenv').config();
 const express = require('express');
-const cookieParser = require('cookie-parser');
-const dotenv = require('dotenv');
-
-// Load environment variables
-dotenv.config();
-
-// Create Express app
 const app = express();
+const clearCollection = require('./devutils/clearCollection');
 
-// Middleware
+const cookieParser = require('cookie-parser');
+const connectDB = require('./utils/db');
+
+//^ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// Default route
-app.get('/', (req, res) => {
-  res.send('Server is running');
-});
+app.use('/user', require('./routes/userRoute'))
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -24,8 +20,10 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!');
 });
 
-// Start server
+// clearCollection();
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
+  connectDB(process.env.MONGO_URI); 
 });
