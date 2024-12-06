@@ -11,10 +11,10 @@ const Navbar = ({ det, det2 }) => {
         THE_SOCIAL_SITE {det}, {det2}
       </div>
       <ul className='nav_list text-sm'>
-        <li> <Link to="/">       HOME</Link></li>
-        <li> <Link to="/login">  LOG_IN</Link>   </li>
-        <li> <Link to="">        REGISTER</Link> </li>
-        <li> <Link to="/imps">   IMPS</Link> </li>
+        <li> <Link to="/">           HOME</Link></li>
+        <li> <Link to="/login">      LOG_IN</Link>   </li>
+        <li> <Link to="/register">   REGISTER</Link> </li>
+        <li> <Link to="/imps">       IMPS</Link> </li>
 
       </ul>
 
