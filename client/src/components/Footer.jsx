@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="footer_content text-center pt-14">
                 Made by Pratik & Bepro_Go_Deeeep
                 <div>
-                All rights Reserved
+                © All rights Reserved 
                 </div>
             </div>
             <div className="icons">

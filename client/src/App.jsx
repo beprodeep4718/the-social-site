@@ -12,14 +12,12 @@ import LogIn from './pages/LogIn';
 
 
 const App = () => {
-  const a = 10;
-  const b = 20;
   return (
     <>
 
       {/* <h1 className='text-center'>Hello guyz</h1> */}
       <BrowserRouter>
-        <Navbar det={a} det2={b} />
+        <Navbar />
         <Routes>
           <Route path='/login' element={<LogIn />} />
           <Route path='/imps' element={<Imps />} />
