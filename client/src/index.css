@@ -36,7 +36,7 @@
   color: white;
   text-decoration: none;
 }
-.nav_list a:hover{
+.nav_list a:hover , .nav_list button:hover{
   color: aqua;
   text-decoration: underline;
   transition: 0.5s;
