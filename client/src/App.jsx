@@ -16,7 +16,7 @@ const App = () => {
 
       {/* <h1 className='text-center'>Hello guyz</h1> */}
       <BrowserRouter>
-        <Navbar />
+        <Navbar det={1} det2={22} is_Authenticated={true}/>
         <Routes>
           <Route path='/login' element={<LogIn />} />
           <Route path='/register' element={<Register />} />
