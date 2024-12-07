@@ -11,7 +11,10 @@ const cors = require('cors');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173", // React frontend URL
+  credentials: true, // Allow cookies
+}));
 
 app.use('/user', require('./routes/userRoute'))
 

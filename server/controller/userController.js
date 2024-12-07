@@ -5,20 +5,31 @@ const User = require("../models/userSchema");
 const userCtrl = {
   register: async (req, res) => {
     try {
-      const { username, email, password } = req.body;
+      const { username, password } = req.body;
+  
+      if (!username || !password) {
+        return res.status(400).json({ msg: "Username and password are required" });
+      }
+  
       const user = await User.findOne({ username });
-      if (user) return res.status(400).json({ msg: "User already exists" });
-
+      if (user) return res.status(400).json({ msg: "Username already taken" });
+  
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
-
-      await User.create({ username, email, password: hashedPassword });
-
+  
+      await User.create({ username, password: hashedPassword });
+  
       res.status(201).json({ msg: "User created successfully" });
     } catch (error) {
+      if (error.code === 11000) {
+        console.log(error.message);
+        return res.status(400).json({ msg: "Duplicate username" });
+      }
       console.log(error.message);
+      res.status(500).json({ msg: "Internal server error" });
     }
   },
+  
   login: async (req, res) => {
     try {
       const { username, password } = req.body;
