@@ -28,8 +28,7 @@ const userCtrl = {
       console.log(error.message);
       res.status(500).json({ msg: "Internal server error" });
     }
-  },
-  
+  }, 
   login: async (req, res) => {
     try {
       const { username, password } = req.body;
@@ -43,7 +42,7 @@ const userCtrl = {
         expiresIn: "1d",
       });
       res.cookie("token", token, { httpOnly: true });
-      res.status(200).json({ msg: "Logged in successfully" });
+      res.status(200).json({ msg: "Logged in successfully", token });
     } catch (error) {
       console.log(error.message);
     }
