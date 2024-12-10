@@ -25,6 +25,7 @@ const Navbar = () => {
         <li>
           <Link to="/"> HOME</Link>
         </li>
+
         {!isAuthenticated ? (
           <>
             <li>
@@ -35,12 +36,18 @@ const Navbar = () => {
             </li>
           </>
         ) : (
-          <li>
-            <button onClick={handleLogout} className="button">
-              LOG_OUT
-            </button>
-          </li>
+          <>
+            <li>            
+              <button onClick={handleLogout} className="button">
+                LOG_OUT
+              </button>
+            </li>
+            <li>
+              <Link to="/profile"> PROFILE </Link>
+            </li>
+          </>
         )}
+
         <li>
           <Link to="/imps">IMPS</Link>
         </li>
