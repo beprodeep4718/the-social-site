@@ -19,10 +19,15 @@ const Register = () => {
     const { success, message } = await register(userdata.username, userdata.password);
     if (success) {
       toast.success(message);
+      // Clear fields after successful registration
+      setUserdata({ username: "", password: "" });
     } else {
       toast.error(message);
     }
+    
   };
+
+
 
   return (
     <div className="form_page">

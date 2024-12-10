@@ -131,3 +131,55 @@
   display: grid;
   place-items: center;  
 } */
+
+
+
+
+/* ########################## PROFILE PAGE #################### */
+.profile_page{
+  background-color: #121212;
+  color: white;
+}
+
+.pp_container {
+  width: 75%;
+  margin: auto;
+}
+
+.section {
+  background-color: #181818;
+  /* border: 2px solid green; */
+}
+.section .item{
+  /* border: 2px solid blue; */
+  width: 25%;
+  /* margin: auto ; */  
+}
+
+.section .posts,.alu,.likes{
+  margin: auto;
+  padding: 0 7.5rem;
+  text-align: center;
+}
+
+.section .counts{
+  font-weight: bolder;
+  font-size: xx-large;
+}
+
+.section img{
+  margin: 3em 4.45em;
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+
+  
+}
+
+/* ############## posts_lists ############## */
+.section .column{
+  width: 25%;
+  text-align: center;
+
+}

@@ -41,6 +41,7 @@ const LogIn = () => {
               <input
                 type="text"
                 name="username"
+                required
                 value={userdata.username}
                 onChange={handleChange}
                 placeholder="Username here"
@@ -49,6 +50,7 @@ const LogIn = () => {
             </div>
             <div className="fields my-2">
               <input
+                required
                 type="password"
                 name="password"
                 value={userdata.password}
