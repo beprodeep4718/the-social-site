@@ -1,44 +1,52 @@
-import React from 'react'
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContext";
+import { toast } from "react-toastify";
 
-// import link from 'next/link'
+const Navbar = () => {
+  const navigate = useNavigate();
+  const { logout, isAuthenticated } = useAuth();
 
-const Navbar = ({ det, det2, is_Authenticated}) => {
-  // const navigate = Navigate();
-  const handleLogout = async (e) => {
-    const response =  await fetch("http://localhost:3000/user/logout")
-    const data = response.json()
-    console.log(data)
-    alert(data)
-    // navigate('/')
-    
-  }
-
-  console.log(det, det2)
+  const handleLogout = async () => {
+    const { success, message } = await logout();
+    if (success) {
+      toast.success(message);
+    } else {
+      toast.error(message);
+    }
+    navigate('/');
+  };
+  
   return (
     <div className="navbar">
       <div className="site_name">
-        THE_SOCIAL_SITE {det} {det2}
+        THE_SOCIAL_SITE
       </div>
-      <ul className='nav_list text-sm'>
-        <li> <Link to="/">           HOME</Link></li>
-        {
-          !is_Authenticated?(
-            <>
-            <li> <Link to="/login">      LOG_IN</Link>   </li>
-            <li> <Link to="/register">   REGISTER</Link> </li>
-            </>
-          ):(
-            <li> <button onClick={handleLogout} className='button'>   LOG_OUT </button>    </li>
-          )
-        }
-        
-        <li> <Link to="/imps">       IMPS</Link> </li>
-
+      <ul className="nav_list text-sm">
+        <li>
+          <Link to="/"> HOME</Link>
+        </li>
+        {!isAuthenticated ? (
+          <>
+            <li>
+              <Link to="/login"> LOG_IN</Link>
+            </li>
+            <li>
+              <Link to="/register"> REGISTER</Link>
+            </li>
+          </>
+        ) : (
+          <li>
+            <button onClick={handleLogout} className="button">
+              LOG_OUT
+            </button>
+          </li>
+        )}
+        <li>
+          <Link to="/imps">IMPS</Link>
+        </li>
       </ul>
-
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

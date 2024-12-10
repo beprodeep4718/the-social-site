@@ -3,15 +3,15 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-import testProvider from './store/testContext.jsx'
+import { AuthProvider } from './context/authContext'
 import SmoothScroll from './components/SmoothScroll.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <testProvider>
+  <AuthProvider>
     <StrictMode>
       <SmoothScroll>
-       <App />
+        <App />
       </SmoothScroll>
     </StrictMode>
-  </testProvider>,
+  </AuthProvider>,
 )

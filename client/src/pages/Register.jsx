@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useAuth } from "../context/authContext";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [userdata, setUserdata] = useState({ username: "", password: "" });
+  const {register} = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -13,18 +16,11 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:3000/user/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify(userdata),
-      });
-      const data = await response.json();
-      alert(data.msg);
-      setUserdata({ username: "", password: "" });
-    } catch (error) {
-      alert("Registration failed. Please try again.", error.message);
+    const { success, message } = await register(userdata.username, userdata.password);
+    if (success) {
+      toast.success(message);
+    } else {
+      toast.error(message);
     }
   };
 
