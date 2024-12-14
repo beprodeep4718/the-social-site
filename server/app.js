@@ -11,12 +11,18 @@ const cors = require("cors");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-  })
-);
+const allowedOrigins = ['http://192.168.31.159:5173', 'http://localhost:5173']; // Add all allowed origins
+app.use(cors({
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, origin);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
+
 
 app.use("/user", require("./routes/userRoute"));
 app.use("/profile", require("./routes/profileRoute"));
@@ -30,7 +36,7 @@ app.use((err, req, res, next) => {
 // clearCollection();
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT,"0.0.0.0", () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB(process.env.MONGO_URI);
 });

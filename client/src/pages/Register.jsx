@@ -15,16 +15,24 @@ const Register = () => {
   };
 
   const handleSubmit = async (e) => {
+
+    // checking passwords 
     e.preventDefault();
+    if (userdata.password !== userdata.confirm_pass){
+      toast.error("Passwords do not match!")
+      return
+    }
+
     const { success, message } = await register(userdata.username, userdata.password);
     if (success) {
       toast.success(message);
+
+
       // Clear fields after successful registration
-      setUserdata({ username: "", password: "" });
+      setUserdata({ username: "", password: "", confirm_pass:"" });
     } else {
       toast.error(message);
-    }
-    
+    }    
   };
 
 
@@ -37,7 +45,7 @@ const Register = () => {
         </h1>
 
         <div className="form_grp">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username" className="font-semibold my-auto">Username</label>
           <input
             type="text"
             name="username"
@@ -50,13 +58,26 @@ const Register = () => {
         </div>
 
         <div className="form_grp">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password" className="font-semibold my-auto">Password</label>
           <input
             type="password"
             name="password"
             value={userdata.password}
             onChange={handleChange}
             id="password"
+            required
+            autoComplete="new-password"
+          />
+        </div>
+
+        <div className="form_grp">
+          <label htmlFor="confirm_pass" className="font-semibold my-auto">Confirm Pass</label>
+          <input
+            type="password"
+            name="confirm_pass"
+            value={userdata.confirm_pass}
+            onChange={handleChange}
+            id="confirm_pass"
             required
             autoComplete="new-password"
           />

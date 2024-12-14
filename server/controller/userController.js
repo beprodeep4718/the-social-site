@@ -51,8 +51,9 @@ const userCtrl = {
     res.clearCookie("token");
     res.status(200).json({ msg: "Logged out successfully" });
   },
-  getUser: async (req, res) => {
-    const user = await User.findById(req.user.id);
+
+    getUser: async (req, res) => {
+    const user = await User.findById(req.user.id).select({password:0});
     res.status(200).json(user);
   },
 };
