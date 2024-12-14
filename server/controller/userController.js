@@ -6,19 +6,21 @@ const userCtrl = {
   register: async (req, res) => {
     try {
       const { username, password } = req.body;
-  
+
       if (!username || !password) {
-        return res.status(400).json({ msg: "Username and password are required" });
+        return res
+          .status(400)
+          .json({ msg: "Username and password are required" });
       }
-  
+
       const user = await User.findOne({ username });
       if (user) return res.status(400).json({ msg: "Username already taken" });
-  
+
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(password, salt);
-  
+
       await User.create({ username, password: hashedPassword });
-  
+
       res.status(201).json({ msg: "User created successfully" });
     } catch (error) {
       if (error.code === 11000) {
@@ -28,7 +30,7 @@ const userCtrl = {
       console.log(error.message);
       res.status(500).json({ msg: "Internal server error" });
     }
-  }, 
+  },
   login: async (req, res) => {
     try {
       const { username, password } = req.body;
@@ -51,9 +53,8 @@ const userCtrl = {
     res.clearCookie("token");
     res.status(200).json({ msg: "Logged out successfully" });
   },
-
-    getUser: async (req, res) => {
-    const user = await User.findById(req.user.id).select({password:0});
+  getUser: async (req, res) => {
+    const user = await User.findById(req.user.id).select({ password: 0 });
     res.status(200).json(user);
   },
 };
