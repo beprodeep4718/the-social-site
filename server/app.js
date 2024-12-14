@@ -11,7 +11,7 @@ const cors = require("cors");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-const allowedOrigins = ['http://192.168.31.159:5173', 'http://localhost:5173']; // Add all allowed origins
+const allowedOrigins = ['http://172.16.104.10:5173', 'http://localhost:5173']; // Add all allowed origins
 app.use(cors({
   origin: (origin, callback) => {
     if (allowedOrigins.includes(origin) || !origin) {

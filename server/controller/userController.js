@@ -41,7 +41,7 @@ const userCtrl = {
       if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
 
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: "10m",
+        expiresIn: "1h",
       });
       res.cookie("token", token, { httpOnly: true });
       res.status(200).json({ msg: "Logged in successfully", token });

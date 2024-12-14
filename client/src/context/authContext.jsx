@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkAuthStatus = async () => {
     try {
-      const response = await fetch('http://localhost:3000/user/userinfo', {
+      const response = await fetch('http://172.16.104.10:3000/user/userinfo', {
         credentials: 'include'
       });
       
@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const response = await fetch('http://localhost:3000/user/login', {
+      const response = await fetch('http://172.16.104.10:3000/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      const response = await fetch('http://localhost:3000/user/logout', {
+      const response = await fetch('http://172.16.104.10:3000/user/logout', {
         credentials: 'include'
       });
       const data = await response.json();
@@ -84,7 +84,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (username, password) => {
     try {
-      const response = await fetch('http://localhost:3000/user/register', {
+      const response = await fetch('http://172.16.104.10:3000/user/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
