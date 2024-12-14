@@ -37,13 +37,16 @@ const Navbar = () => {
           </>
         ) : (
           <>
+            <li className="font-bold">
+              <Link to="/profile"> PROFILE </Link>
+            </li>
+            <li className="font-bold">
+              <Link to="/create_post"> Create_Post </Link>
+            </li>
             <li>            
               <button onClick={handleLogout} className="button">
                 LOG_OUT
               </button>
-            </li>
-            <li>
-              <Link to="/profile"> PROFILE </Link>
             </li>
           </>
         )}

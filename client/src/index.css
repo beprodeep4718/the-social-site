@@ -136,6 +136,8 @@
 
 
 /* ########################## PROFILE PAGE #################### */
+/* ########################## PROFILE PAGE #################### */
+/* ########################## PROFILE PAGE #################### */
 .profile_page{
   background-color: #121212;
   color: white;
@@ -158,7 +160,7 @@
 
 .section .posts,.alu,.likes{
   margin: auto;
-  padding: 0 7.5rem;
+  /* padding: 0 7.5rem; */
   text-align: center;
 }
 
@@ -177,9 +179,79 @@
   
 }
 
+/* ######################### updates section ######################### */
+
+.updates .update_buttons input[type="file"]{
+  color: aqua;
+  font-weight: 400;
+  /* border: 2px solid green; */
+  text-align: center;
+  margin: 0.2rem 0;
+  width: 100%;
+}
+.updates .update_buttons input::file-selector-button{
+  color: white;
+  background-color: black;
+  border-radius: 5rem;
+  border: none;
+  padding: 0.4em 2em;
+  /* border: 2px solid red; */
+}
+.updates .update_buttons input::file-selector-button:hover{
+  background-color: white;
+  color: black;
+  border: 3px solid black;
+
+}
+
+.updates .btn .save_changes{
+  border-radius: 5rem;
+  font-weight: bolder;
+  padding: 0.5em 1.8em;
+  text-align: center;
+  background-color: #121212;
+}
+.updates .btn .save_changes:hover{
+  background-color: #181818;
+  color: aqua;
+}
+
+
+
+
 /* ############## posts_lists ############## */
 .section .column{
   width: 25%;
   text-align: center;
 
+}
+
+
+/* ##################### REGISTER_PAGE ##################### */
+/* ##################### REGISTER_PAGE ##################### */
+/* ##################### REGISTER_PAGE ##################### */
+
+.form_grp{
+  /* background-color: aquamarine; */
+  display: flex;
+  justify-content: space-around;
+}
+.form_grp input[name="username"]{
+  /* border: 3px solid green; */
+  margin-left: 2.3rem;  
+}
+.form_grp input[name="password"]{
+  /* border: 3px solid green; */
+  margin-left: 2.4rem;
+}
+
+
+.form_grp input:focus{
+  outline: none;
+  border-color: blue;
+  box-shadow: 0 0 5px rgba(0, 0, 255, 0.5);
+
+  padding: 0.2em;
+  background-color: rgb(159, 238, 246);
+  border: 2px solid blue;
 }

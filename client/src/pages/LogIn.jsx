@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
   const [userdata, setUserdata] = useState({ username: "", password: "" });
-  const { login } = useAuth();
+  const { login,checkAuthStatus } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -28,7 +28,9 @@ const LogIn = () => {
     } else {
       toast.error(message);
     }
+    // checkAuthStatus();
     navigate("/");
+
   };
 
   return (
