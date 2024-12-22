@@ -39,7 +39,7 @@ const Profile = () => {
     <div className="profile_page">
       {isLoading ? (
         <div>
-            <Loading/>
+          <Loading />
         </div>
       ) : (
         <div className="pp_container py-5">
@@ -70,35 +70,34 @@ const Profile = () => {
           <div className="updates section">
             <div className="pp_container">
               <div className="update_buttons mt-4 py-3 flex flex-col">
+                
                 <form
-                  className="update_dp my-2 flex justify-start"
+                  className="update_dp my-2 flex"
                   onSubmit={(e) => e.preventDefault()}
-                >
-                  <h3 className="font-semibold">Update DP :</h3>
+                >                 
+                  <h3 className="font-semibold mr-52">Update DP :</h3>
                   <input
+                    className="max-w-96 block"
                     type="file"
                     name="image"
                     id="profile-pic"
                     accept="image/*"
                     onChange={handleProfilepic}
                   />
-                  <button
-                    type="submit"
-                    className="save_changes px-4 py-2 rounded-lg text-center border-2 border-red-800 text-amber-400"
-                  >
-                    change dp
-                  </button>
                 </form>
-                <div className="update_pass my-2 flex">
-                  <h3 className="font-semibold">Update Pass :</h3>
-                  <input type="file" name="" id="" />
-                </div>
+
+                <form action="" className="flex">
+                    <div className="update_pass my-2 flex w-4/5 ">
+                        <h3 className="font-semibold">Update Pass :</h3>
+                            <input type="password" name="new_password" className="mx-auto rounded-full border-2 border-blue-400 focus:bg-blue-200 focus:text-xl" id="" />
+                    </div>                    
+                    <button className="btn save_changes text-center border-4 border-red-800 text-amber-400 w-1/4 rounded-full hover:bg-black hover:text-white">
+                        Save_password
+                    </button>                    
+                </form>
+
               </div>
-              <div className="btn text-center pb-3">
-                <button className="save_changes text-center border-2 border-red-800 text-amber-400">
-                  Save_changes
-                </button>
-              </div>
+              
             </div>
           </div>
 
