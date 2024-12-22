@@ -23,7 +23,6 @@ const Profile = () => {
 
       const data = await response.json();
       if (response.ok) {
-        toast.success(data.message);
         window.location.reload(); // Reload to show updated profile pic
       } else {
         toast.error(data.message);
@@ -55,7 +54,7 @@ const Profile = () => {
             </div>
             <div className="posts item">
               <h2 className="text-xm">Posts</h2>
-              <div className="counts">7</div>
+              <div className="counts">{user.posts.length}</div>
             </div>
             <div className="likes item">
               <h2>Likes</h2>

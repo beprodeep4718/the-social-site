@@ -26,7 +26,7 @@ const App = () => {
           <Route path="/create_post" element={<Create_post />} />
         </Routes>
         <Footer />
-        <ToastContainer />
+        <ToastContainer position="bottom-left" />
       </BrowserRouter>
     </>
   );

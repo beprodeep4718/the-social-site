@@ -9,7 +9,14 @@ const storage = new CloudinaryStorage({
       folder: "hostel-site/profile-pic",
     },
 })
+const Poststorage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+      folder: "hostel-site/posts",
+    },
+})
 
 const upload = multer({ storage });
+const postUpload = multer({storage: Poststorage });
 
-module.exports = upload;
+module.exports = {upload, postUpload};
