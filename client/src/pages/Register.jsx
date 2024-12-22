@@ -30,6 +30,7 @@ const Register = () => {
 
       // Clear fields after successful registration
       setUserdata({ username: "", password: "", confirm_pass:"" });
+      
     } else {
       toast.error(message);
     }    

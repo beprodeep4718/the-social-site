@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const profileCtrl = require("../controller/profileController");
 const authMiddleware = require("../middleware/authMiddleware");
-const upload = require("../config/multer.js");
+const { upload } = require("../config/multer.js");
 
 router
   .route("/upload")

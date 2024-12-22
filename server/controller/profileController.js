@@ -1,11 +1,14 @@
 const cloudinary = require("../config/cloudinary");
 const User = require("../models/userSchema");
-const upload = require("../config/multer.js");
+const {upload} = require("../config/multer.js");
 
 const profileCtrl = {
   uploadProfile: async (req, res) => {
     try {
       const user = await User.findOne({ _id: req.user.id });
+      if(user.profilePicture.public_id !== '') {
+        await cloudinary.uploader.destroy(user.profilePicture.public_id); // Delete the old image from cloudinary
+      }
       const newProfile = await user.updateOne(
         {
           profilePicture: {
