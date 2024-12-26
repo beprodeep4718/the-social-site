@@ -30,7 +30,7 @@ const Profile = () => {
     } catch (error) {
       toast.error("Error uploading profile picture");
     } finally {
-      setIsLoading(false); // Hide loading state
+      setIsLoading(false);
     }
   };
 
@@ -43,7 +43,7 @@ const Profile = () => {
       ) : (
         <div className="pp_container py-5">
           <h1 className="text-3xl mt-4 mb-2 font-semibold">
-            {user.username}&apos;s Profile
+            {user.username}&apos;s Profile details
           </h1>
           <div className="section flex rounded-md">
             <div className="photo">
