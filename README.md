@@ -107,3 +107,72 @@
     "msg": "Internal server error"
   }
   ```
+
+### Create Post
+
+**Endpoint:** `POST /post/create`
+
+**Description:** Create a new post.
+
+**Request Headers:**
+- `Authorization: Bearer <token>`
+
+**Request Body:**
+- `content`: The content of the post.
+- `image`: The image file to be uploaded (optional).
+
+**Response:**
+- Success: `201 Created`
+  ```json
+  {
+    "_id": "post_id_here",
+    "content": "Post content here",
+    "image": {
+      "url": "url_of_uploaded_image",
+      "public_id": "image_public_id"
+    },
+    "author": "user_id_here",
+    "createdAt": "timestamp_here",
+    "updatedAt": "timestamp_here"
+  }
+  ```
+- Error: `400 Bad Request`
+  ```json
+  {
+    "message": "Error message here"
+  }
+  ```
+
+### Get All Posts
+
+**Endpoint:** `GET /post/`
+
+**Description:** Retrieve all posts.
+
+**Response:**
+- Success: `200 OK`
+  ```json
+  [
+    {
+      "_id": "post_id_here",
+      "content": "Post content here",
+      "image": {
+        "url": "url_of_uploaded_image",
+        "public_id": "image_public_id"
+      },
+      "author": {
+        "_id": "user_id_here",
+        "username": "exampleUser"
+      },
+      "createdAt": "timestamp_here",
+      "updatedAt": "timestamp_here"
+    },
+    // ...other posts...
+  ]
+  ```
+- Error: `400 Bad Request`
+  ```json
+  {
+    "message": "Error message here"
+  }
+  ```
