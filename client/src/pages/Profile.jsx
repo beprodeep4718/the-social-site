@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import Loading from "../components/Loading";
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, server_url } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleProfilepic = async (e) => {
@@ -15,7 +15,7 @@ const Profile = () => {
       const formData = new FormData();
       formData.append("image", e.target.files[0]);
 
-      const response = await fetch("http://172.16.104.10:3000/profile/upload", {
+      const response = await fetch(`http://${server_url}/profile/upload`, {
         method: "POST",
         credentials: "include",
         body: formData,

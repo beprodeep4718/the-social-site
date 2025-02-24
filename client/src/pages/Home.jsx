@@ -9,7 +9,7 @@ const Body = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://172.16.104.10:3000/post");
+        const response = await axios.get(`http://${server_url}/post`);
         const sortedPosts = response.data.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         ); // Sort posts by newest first

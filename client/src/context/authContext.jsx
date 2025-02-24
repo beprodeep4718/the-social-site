@@ -1,3 +1,6 @@
+
+
+
 import { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
@@ -10,6 +13,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
+  const server_url = "localhost:3000"                                      // server ///////////////////////////////////////////////////
 
   useEffect(() => {
     checkAuthStatus();
@@ -17,7 +21,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkAuthStatus = async () => {
     try {
-      const response = await fetch('http://172.16.104.10:3000/user/userinfo', {
+      const response = await fetch(`http://${server_url}/user/userinfo`, {
         credentials: 'include'
       });
       
@@ -40,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (username, password) => {
     try {
-      const response = await fetch('http://172.16.104.10:3000/user/login', {
+      const response = await fetch(`http://${server_url}/user/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -66,7 +70,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      const response = await fetch('http://172.16.104.10:3000/user/logout', {
+      const response = await fetch(`http://${server_url}/user/logout`, {
         credentials: 'include'
       });
       const data = await response.json();
@@ -84,7 +88,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (username, password) => {
     try {
-      const response = await fetch('http://172.16.104.10:3000/user/register', {
+      const response = await fetch(`http://${server_url}/user/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -113,7 +117,8 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     register,
-    checkAuthStatus
+    checkAuthStatus,
+    server_url
   };
 
   return (
