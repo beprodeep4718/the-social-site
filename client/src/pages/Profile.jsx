@@ -7,6 +7,7 @@ import Loading from "../components/Loading";
 const Profile = () => {
   const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
+  console.log(user)
 
   const handleProfilepic = async (e) => {
     try {
@@ -111,28 +112,21 @@ const Profile = () => {
           </div>
 
           <div className="post_lists">
-            <div className="section my-2 py-2 rounded-md">
-              <div className="data flex py-2">
-                <h2 className="column">
-                  <a href="" className="button">
-                    Visit
-                  </a>
-                </h2>
-                <h2 className="column">See what I found</h2>
-                <h2 className="column">Dec 12, 2024</h2>
-              </div>
-            </div>
-            <div className="section my-2 py-2 rounded-md">
-              <div className="data flex py-2">
-                <h2 className="column">
-                  <a href="" className="button">
-                    Visit_2
-                  </a>
-                </h2>
-                <h2 className="column">Hello Guyz! Chai Pilo...</h2>
-                <h2 className="column">Dec 12, 2024</h2>
-              </div>
-            </div>
+            {
+              user.posts.map((post) => (
+                <div className="section my-2 py-2 rounded-md" key={post._id}>
+                  <div className="data flex py-2">
+                    <h2 className="column">
+                      <a href="" className="button">
+                        Visit
+                      </a>
+                    </h2>
+                    <h2 className="column">{post.content}</h2>
+                    <h2 className="column">{post.createdAt}</h2>
+                  </div>
+                </div>
+              ))
+            }
           </div>
         </div>
       )}

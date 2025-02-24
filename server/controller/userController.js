@@ -48,7 +48,8 @@ const userCtrl = {
   },
   getUser: async (req, res) => {
     try {
-      const user = await User.findById(req.user.id).select({ password: 0 });
+      const user = await User.findById(req.user.id).select({ password: 0 }).populate("posts");
+      if (!user) return res.status(400).json({ msg: "User does not exist" });
       res.status(200).json(user);
     } catch (error) {
       res.status(500).json({ msg: "Internal server error" });

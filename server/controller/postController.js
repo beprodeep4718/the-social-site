@@ -3,7 +3,6 @@ const User = require('../models/userSchema')
 const ctrlPost = {
     create: async (req, res) => {
         try {
-            console.log("File:", req.file); // Debugging line
             const newPost = new Post({
                 content: req.body.content || '',
                 image: req.file
