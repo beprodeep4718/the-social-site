@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
 import { toast } from "react-toastify";
+import {useNavigate} from "react-router-dom"
+
 
 const Register = () => {
   const [userdata, setUserdata] = useState({ username: "", password: "" });
   const {register} = useAuth();
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,8 +29,7 @@ const Register = () => {
     const { success, message } = await register(userdata.username, userdata.password);
     if (success) {
       toast.success(message);
-
-
+      navigate("/login")
       // Clear fields after successful registration
       setUserdata({ username: "", password: "", confirm_pass:"" });
       
