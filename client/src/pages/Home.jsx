@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useAuth } from "../context/authContext";
 
 const Body = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const {server_url} = useAuth()
 
   // Fetch posts from the backend
   useEffect(() => {
