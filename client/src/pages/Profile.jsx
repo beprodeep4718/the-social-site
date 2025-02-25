@@ -7,7 +7,7 @@ import Loading from "../components/Loading";
 const Profile = () => {
   const { user, server_url } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
-  console.log(user)
+  console.log(user);
 
   const handleProfilepic = async (e) => {
     try {
@@ -70,11 +70,10 @@ const Profile = () => {
           <div className="updates section">
             <div className="pp_container">
               <div className="update_buttons mt-4 py-3 flex flex-col">
-                
                 <form
                   className="update_dp my-2 flex"
                   onSubmit={(e) => e.preventDefault()}
-                >                 
+                >
                   <h3 className="font-semibold mr-52">Update DP :</h3>
                   <input
                     className="max-w-96 block"
@@ -87,17 +86,20 @@ const Profile = () => {
                 </form>
 
                 <form action="" className="flex">
-                    <div className="update_pass my-2 flex w-4/5 ">
-                        <h3 className="font-semibold">Update Pass :</h3>
-                            <input type="password" name="new_password" className="mx-auto rounded-full border-2 border-blue-400 focus:bg-blue-200 focus:text-xl" id="" />
-                    </div>                    
-                    <button className="btn save_changes text-center border-4 border-red-800 text-amber-400 w-1/4 rounded-full hover:bg-black hover:text-white">
-                        Save_password
-                    </button>                    
+                  <div className="update_pass my-2 flex w-4/5 ">
+                    <h3 className="font-semibold">Update Pass :</h3>
+                    <input
+                      type="password"
+                      name="new_password"
+                      className="mx-auto rounded-full border-2 border-blue-400 focus:bg-blue-200 focus:text-xl"
+                      id=""
+                    />
+                  </div>
+                  <button className="btn save_changes text-center border-4 border-red-800 text-amber-400 w-1/4 rounded-full hover:bg-black hover:text-white">
+                    Save_password
+                  </button>
                 </form>
-
               </div>
-              
             </div>
           </div>
 
@@ -111,21 +113,19 @@ const Profile = () => {
           </div>
 
           <div className="post_lists">
-            {
-              user.posts.map((post) => (
-                <div className="section my-2 py-2 rounded-md" key={post._id}>
-                  <div className="data flex py-2">
-                    <h2 className="column">
-                      <a href="" className="button">
-                        Visit
-                      </a>
-                    </h2>
-                    <h2 className="column">{post.content}</h2>
-                    <h2 className="column">{post.createdAt}</h2>
-                  </div>
+            {user.posts.map((post) => (
+              <div className="section my-2 py-2 rounded-md" key={post._id}>
+                <div className="data flex py-2">
+                  <h2 className="column">
+                    <img src={post.image.url} alt="" />
+                  </h2>
+                  <h2 className="column">{post.content}</h2>
+                  <h2 className="column">
+                    {new Date(post.createdAt).toLocaleDateString("en-US")}
+                  </h2>
                 </div>
-              ))
-            }
+              </div>
+            ))}
           </div>
         </div>
       )}

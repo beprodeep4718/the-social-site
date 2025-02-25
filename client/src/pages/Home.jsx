@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useAuth } from "../context/authContext";
+import { Heart } from "lucide-react";
 
 const Body = () => {
+  const { server_url } = useAuth();
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -21,7 +24,17 @@ const Body = () => {
       }
     };
     fetchPosts();
-  }, []);
+  }, [posts]);
+  const handleLike = async (id) => {
+    try {
+      const response = await axios.get(`http://${server_url}/post/like/${id}`, {
+        withCredentials: true,
+      });
+      console.log(response.data.message);
+    } catch (error) {
+      console.error("Error liking post:", error);
+    }
+  };
   return (
     <div className="bg-black pb-5">
       <div className="container text-red-500 m-auto">
@@ -31,7 +44,10 @@ const Body = () => {
           <div className="text-center text-white">Loading posts...</div>
         ) : (
           posts.map((post) => (
-            <div key={post._id} className="day_content border-green-500 border-2 my-5">
+            <div
+              key={post._id}
+              className="day_content border-green-500 border-2 my-5"
+            >
               <div className="date text-2xl text-right font-bold">
                 {new Date(post.createdAt).toLocaleDateString("en-US")}
               </div>
@@ -49,15 +65,23 @@ const Body = () => {
                 </div>
 
                 <div className="content my-3">
-                  {post.content != "" && <p className="text-white px-4 py-2">{post.content}</p>}
+                  {post.content != "" && (
+                    <p className="text-white px-4 py-2">{post.content}</p>
+                  )}
                   {post.image.url != "" && (
                     <img src={post.image.url} alt="Post" className="w-full" />
                   )}
                 </div>
 
                 <div className="bottom_text p-1 text-center w-full">
-                  <div className="btn">
-                    <button className="like_button text-right text-blue-500">Like</button>
+                  <div className="btn flex items-center justify-center">
+                    <button
+                      className="like_button text-right text-blue-500 "
+                      onClick={() => handleLike(post._id)}
+                    >
+                      <Heart /> 
+                    </button>
+                    <span>{post.likes.length}</span>
                   </div>
                 </div>
               </div>
