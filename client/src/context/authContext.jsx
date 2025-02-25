@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
-  const server_url = "localhost:3000"                                      // server ///////////////////////////////////////////////////
+  const server_url = "172.16.104.10:3000"                                      // server ///////////////////////////////////////////////////
 
   useEffect(() => {
     checkAuthStatus();
